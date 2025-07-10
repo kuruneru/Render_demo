@@ -1,0 +1,18 @@
+services:
+  - type: private
+    name: mysql-service
+    runtime: docker
+    plan: free
+    envVars:
+      - key: MYSQL_DATABASE
+        value: sampledb
+      - key: MYSQL_USER
+        value: sampleuser
+      - key: MYSQL_PASSWORD
+        value: samplepass
+      - key: MYSQL_ROOT_PASSWORD
+        value: rootpass
+    disk:
+      name: mysql-disk
+      mountPath: /var/lib/mysql
+      sizeGB: 10
