@@ -12,4 +12,6 @@ engine = create_engine(DB_URL)
 
 @app.get("/", response_class=HTMLResponse)
 def read_root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request, "message": "Hello World for Render"})
+    with engine.connect() as conn:
+        result = conn.execute(text("SELECT 'Hello from MySQL'")).fetchone()
+    return templates.TemplateResponse("index.html", {"request": request, "msg": result[0]})
