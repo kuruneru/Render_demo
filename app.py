@@ -13,6 +13,10 @@ templates = Jinja2Templates(directory="templates")
 DB_URL = "postgresql+psycopg2://sampleuser:samplepass@postgres-service:5432/sampledb"
 engine = create_engine(DB_URL)
 
+DB_HOST = os.getenv("DB_HOST")
+print(f">> DEBUG: DB_HOST = {DB_HOST}")
+
+
 print(">> DEBUG: DB_URL =", DB_URL)
 
 # ✅ DB接続リトライ処理
