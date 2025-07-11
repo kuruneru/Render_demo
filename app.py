@@ -12,6 +12,8 @@ templates = Jinja2Templates(directory="templates")
 DB_URL = f"mysql+pymysql://{os.environ['DB_USER']}:{os.environ['DB_PASSWORD']}@{os.environ['DB_HOST']}:3306/{os.environ['DB_NAME']}"
 engine = create_engine(DB_URL)
 
+print(">> DEBUG: DB_URL =", DB_URL)
+
 retries = 5
 while retries > 0:
     try:
