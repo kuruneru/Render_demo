@@ -9,7 +9,7 @@ import os
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
-DB_URL = f"mysql+pymysql://{os.environ['DB_USER']}:{os.environ['DB_PASSWORD']}@{os.environ['DB_HOST']}:3306/{os.environ['DB_NAME']}"
+DB_URL = postgresql+psycopg2://sampleuser:samplepass@postgres-service:5432/sampledb
 engine = create_engine(DB_URL)
 
 print(">> DEBUG: DB_URL =", DB_URL)

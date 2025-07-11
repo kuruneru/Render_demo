@@ -6,7 +6,9 @@ services:
     autoDeploy: true
     envVars:
       - key: DB_HOST
-        value: mysql-service
+        fromService:
+          name: postgres-service
+          type: private
       - key: DB_USER
         value: sampleuser
       - key: DB_PASSWORD
@@ -18,21 +20,21 @@ services:
     healthCheckPath: /
 
   - type: private
-    name: mysql-service
+    name: postgres-service
     runtime: image
     plan: free
+    image:
+      url: postgres:16  # これを追加（PostgreSQLの公式イメージ）
     envVars:
-      - key: MYSQL_DATABASE
+      - key: POSTGRES_DB
         value: sampledb
-      - key: MYSQL_USER
+      - key: POSTGRES_USER
         value: sampleuser
-      - key: MYSQL_PASSWORD
+      - key: POSTGRES_PASSWORD
         value: samplepass
-      - key: MYSQL_ROOT_PASSWORD
-        value: rootpass
     disk:
-      name: mysql-disk
-      mountPath: /var/lib/mysql
+      name: postgres-disk
+      mountPath: /var/lib/postgresql/data
       sizeGB: 10
-    ports:                  # ✅ 3306ポートを明示
-      - port: 3306
+    ports:
+      - port: 5432
