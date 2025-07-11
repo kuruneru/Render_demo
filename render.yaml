@@ -16,23 +16,23 @@ services:
       - key: PORT
         value: "10000"
     healthCheckPath: /
-    
+
   - type: private
     name: mysql-service
     runtime: image
     plan: free
     envVars:
-    - key: MYSQL_DATABASE
-      value: sampledb
-    - key: MYSQL_USER
-      value: sampleuser
-    - key: MYSQL_PASSWORD
-      value: samplepass
-    - key: MYSQL_ROOT_PASSWORD
-      value: rootpass
+      - key: MYSQL_DATABASE
+        value: sampledb
+      - key: MYSQL_USER
+        value: sampleuser
+      - key: MYSQL_PASSWORD
+        value: samplepass
+      - key: MYSQL_ROOT_PASSWORD
+        value: rootpass
     disk:
-    name: mysql-disk
-    mountPath: /var/lib/mysql
-    sizeGB: 10
-    ports:              # 🔴 これを追加
-    - port: 3306
+      name: mysql-disk
+      mountPath: /var/lib/mysql
+      sizeGB: 10
+    ports:                  # ✅ 3306ポートを明示
+      - port: 3306
