@@ -15,3 +15,10 @@ def read_root(request: Request):
     with engine.connect() as conn:
         result = conn.execute(text("SELECT 'Hello from MySQL'")).fetchone()
     return templates.TemplateResponse("index.html", {"request": request, "msg": result[0]})
+
+port = int(os.environ.get("PORT", 10000))
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("app:app", host="0.0.0.0", port=port)
+
