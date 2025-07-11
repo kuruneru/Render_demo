@@ -19,7 +19,7 @@ services:
 
   - type: private
     name: mysql-service
-    runtime: image
+    runtime: docker
     plan: free
     envVars:
       - key: MYSQL_DATABASE
