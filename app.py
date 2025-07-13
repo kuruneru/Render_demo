@@ -10,7 +10,7 @@ app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
 # ✅ DB_URL は文字列で記述
-DB_URL = "postgresql+psycopg2://sampleuser:samplepass@postgres-service:5432/sampledb"
+DB_URL = "postgresql+psycopg2://sampleuser:samplepass@{}:5432/sampledb".format(os.getenv("DB_HOST"))
 engine = create_engine(DB_URL)
 
 DB_HOST = os.getenv("DB_HOST")

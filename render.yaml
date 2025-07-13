@@ -24,7 +24,7 @@ services:
     runtime: image
     plan: free
     image:
-      url: postgres:16  # これを追加（PostgreSQLの公式イメージ）
+      url: postgres:16
     envVars:
       - key: POSTGRES_DB
         value: sampledb
