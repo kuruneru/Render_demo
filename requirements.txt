@@ -1,5 +1,5 @@
-sqlalchemy
-psycopg2-binary
 fastapi
 uvicorn
+sqlalchemy
 jinja2
+psycopg2-binary

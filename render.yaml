@@ -1,21 +1,11 @@
 services:
   - type: web
-    name: fastapi-app
+    name: neon-fastapi-demo
     runtime: docker
     plan: free
     autoDeploy: true
-    healthCheckPath: /
-    # ポート番号はコード側の os.getenv("PORT", 10000) で対応
-
-  - type: private
-    name: postgres-service
-    runtime: image
-    plan: free
-    image:
-      url: postgres:16
-    disk:
-      name: postgres-disk
-      mountPath: /var/lib/postgresql/data
-      sizeGB: 10
-    ports:
-      - port: 5432
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql+psycopg2://user:yourpassword@ep-xxxx.us-west-2.aws.neon.tech:5432/neondb
+      - key: PORT
+        value: "10000"
