@@ -6,6 +6,6 @@ services:
     autoDeploy: true
     envVars:
       - key: DATABASE_URL
-        value: postgresql+psycopg2://user:yourpassword@ep-xxxx.us-west-2.aws.neon.tech:5432/neondb
+        value: postgresql://neondb_owner:npg_IBFc6nl2EVNG@ep-patient-wildflower-adpj86r5-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
       - key: PORT
         value: "10000"
