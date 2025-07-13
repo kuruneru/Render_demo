@@ -6,9 +6,7 @@ services:
     autoDeploy: true
     envVars:
       - key: DB_HOST
-        fromService:
-          name: postgres-service
-          type: private
+        value: postgres_service
       - key: DB_USER
         value: sampleuser
       - key: DB_PASSWORD
