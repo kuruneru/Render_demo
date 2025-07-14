@@ -24,6 +24,6 @@ def read_root(request: Request):
 # フォームのPOST受け取り → SQLにINSERT
 @app.post("/submit")
 def submit_message(message: str = Form(...)):
-    with engine.connect() as conn:
+    with engine.begin() as conn:
         conn.execute(text("INSERT INTO messages (content) VALUES (:msg)"), {"msg": message})
-    return RedirectResponse("/", status_code=303)  # リダイレクトで更新
+        return RedirectResponse("/", status_code=303)  # リダイレクトで更新
